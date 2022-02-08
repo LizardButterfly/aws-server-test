@@ -1,28 +1,23 @@
-const express = require("express");
-const app = express();
+const express = require('express')
 
+const app = express()
 app.use(express.json())
 
-const pokemons = [
-  {
-    id: 1,
-    name: "Pikachu",
-    type: "electric ⚡️",
-    level: 99,
-    image: "/pikachu.webp"
-  }
-]
+app.use(express.static("build"))
 
-app.get("/api/pokemons", (req, res) => {
-  res.send({pokemons: pokemons})
-});
+const foods = ["Christmas Pudding", "Mince pie", "stuffing", "eggnog", "gingersnaps"]
 
-app.post("/api/pokemons", (req, res) => {
-  const data = req.body
-  data.id = pokemons.length+1
-  pokemons.push(data)
-  res.send(data)
+app.get("/api/foods", (req, res) => {
+  // const food = foods[Math.floor(Math.random()*foods.length)];
+  // res.send(food)
+  res.send(foods)
+})
+
+app.post("/api/foods", (req, res) => {
+  const foodName = req.body.name
+  foods.push(foodName)
+  res.send(req.body)
 })
 
 const port = process.env.PORT || 8000
-app.listen(port, () => console.log(`listening on port ${port}`))
+app.listen(port, () => console.log("listening on port 8000"))
