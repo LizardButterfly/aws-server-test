@@ -5,7 +5,7 @@ app.use(express.json())
 
 app.use(express.static("build"))
 
-const foods = ["Christmas Pudding", "Mince pie", "stuffing", "eggnog", "gingersnaps"]
+const foods = ["Godiva", "Ghirardelli", "Hershey", "Dove", "Ferrero", "Neuhaus", "Russell", "Stover", "Nestle"]
 
 app.get("/api/foods", (req, res) => {
   // const food = foods[Math.floor(Math.random()*foods.length)];
